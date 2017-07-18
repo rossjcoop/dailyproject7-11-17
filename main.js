@@ -98,21 +98,11 @@ let formData = [
 // -------- Your Code Goes Below this Line -------
 
 
-///////////////////////////////////////////////////////////////
-//{ ///or
-///or
-//formData.forEach(function(item)){            Was trying to loop through option data:(
-//let optionlist = []
-//for(i = 0; i < formData.length; i++ ){
-//optionlist.push(formData[i].options)
-//}
-//let languageoptions = []
-//for(i = 0; i < optionlist.length; i++){
-//languageoptions.push(optionlist[i].label)
-//}
 
-let myfields = document.getElementById("fields")////the div for the form
+
+let myfields = document.getElementById("fields")
 let myform = document.createElement("form")
+
 myfields.appendChild(myform)
 
 formData.forEach(function(item){
@@ -121,103 +111,57 @@ formData.forEach(function(item){
   let inputid = item.id
   let inputicon = item.icon
   let inputoption = item.option
-  //let inputoptions = item.option.label
 
-  if(inputtype === "text" || "email" || "tel"){
+
+  if(inputtype == "text"){
    let myinput = document.createElement("input") 
    myinput.setAttribute("type", inputtype)
    myinput.setAttribute("placeholder", inputlabel)
    myinput.setAttribute("id", inputid)
+   myinput.setAttribute("icon", inputicon)
    myform.appendChild(myinput)
- } else if(inputtype === "textarea"){
-   let mytext = document.createElement("textarea")
-   mytext.setAttribute("type", inputtype)
-   mytext.setAttribute("placeholder", inputlabel)
-   mytext.setAttribute("id", inputid)
-   myform.appendChild(mytext)
- } else if(inputtype === "select"){
+
+ } else if(inputtype == "email"){
+   let myemail = document.createElement("input") 
+   myemail.setAttribute("type", inputtype)
+   myemail.setAttribute("placeholder", inputlabel)
+   myemail.setAttribute("id", inputid)
+   myemail.setAttribute("icon", inputicon)
+   myform.appendChild(myemail)
+
+ } else if(inputtype == "tel"){
+   let mytel = document.createElement("input") 
+   mytel.setAttribute("type", inputtype)
+   mytel.setAttribute("placeholder", inputlabel)
+   mytel.setAttribute("id", inputid)
+   mytel.setAttribute("icon", inputicon)
+   myform.appendChild(mytel)
+
+ } else if(inputtype == "textarea"){
+   let mytextarea = document.createElement("textarea")
+   mytextarea.setAttribute("type", inputtype)
+   mytextarea.setAttribute("placeholder", inputlabel)
+   mytextarea.setAttribute("id", inputid)
+   mytextarea.setAttribute("rows", "10")
+   mytextarea.setAttribute("icon", inputicon)
+   myform.appendChild(mytextarea)
+
+ } else if(inputtype == "select"){
    let myselect = document.createElement("select")
+   let myselectoptions = document.createElement("option")
+   let myselecttext = document.createTextNode(inputlabel)
+   myselectoptions.appendChild(myselecttext)
+   myselect.appendChild(myselectoptions)
+      item.options.forEach(function(item){
+      let myselectoption = document.createElement("option")
+      myselectoption.setAttribute("value", item.value)
+      let myselectoptiontext = document.createTextNode(item.label)
+      myselectoption.appendChild(myselectoptiontext)
+      myselect.appendChild(myselectoption)
+      })
    myform.appendChild(myselect)
  }
 
+
 })
 
-//let inputtype = formData[i].type
-//let inputlabel = formData[i].label       Before Jase's help
-//let languageoption1label = languageoptions[i].label
-
-//let myfname = document.createElement("input")  
-//let mylname = document.createElement("input")
-//let myemail = document.createElement("input")
-//let myurl = document.createElement("input")
-//let mylanguage = document.createElement("select")
-//let mylanguageoptions1 = document.createElement("option")
-//let mylanguageoptions2 = document.createElement("option")
-//let mylanguageoptions3 = document.createElement("option")
-//let mylanguageoptions4 = document.createElement("option")
-//let mylanguageoptions5 = document.createElement("option")
-//let mycomment = document.createElement("textarea")
-//let mymobile = document.createElement("input")
-//let myhome = document.createElement("input")
-
-
-//myfname.setAttribute("type", inputtype)
-//myfname.setAttribute("placeholder", inputlabel)
-//mylname.setAttribute("type", inputtype)
-//mylname.setAttribute("placeholder", inputlabel)
-//myemail.setAttribute("type", inputtype)
-//myemail.setAttribute("placeholder", inputlabel)
-//myurl.setAttribute("type", inputtype)
-//myurl.setAttribute("placeholder", inputlabel)
-//mylanguage.setAttribute()
-
-//mycomment.setAttribute("type", inputtype)
-//mycomment.setAttribute("placeholder", inputlabel)
-//mymobile.setAttribute("type", inputtype)
-///mymobile.setAttribute("placeholder", inputlabel)
-//myhome.setAttribute("type", inputtype)
-//myhome.setAttribute("placeholder", inputlabel)
-
-
-
-//myfields.appendChild(myfname)
-//myfields.appendChild(mylname)
-//myfields.appendChild(myemail)
-//myfields.appendChild(myurl)
-//myfields.appendChild(mylanguage)
-//mylanguage.appendChild(mylanguageoptions1)
-//mylanguage.appendChild(mylanguageoptions2)
-//mylanguage.appendChild(mylanguageoptions3)
-//mylanguage.appendChild(mylanguageoptions4)
-//mylanguage.appendChild(mylanguageoptions5)
-//myfields.appendChild(mycomment)
-//myfields.appendChild(mymobile)
-//myfields.appendChild(myhome)
-
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//   "#" += `<input type="${item.type}" placeholder="${item.label}" id="${item.id}" />`
-//}
-
-
-
-//dropdown
-//item.options.forEach(function(option){})
-//htmlStr += `<option value="${option.value}">${option.label}</option>`
-
-//}
-//}
-//let user-first-name
